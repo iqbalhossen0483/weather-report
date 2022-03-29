@@ -10,6 +10,7 @@ const Details: FC<{ country: Country }> = ({ country }) => {
       .then((res) => res.json())
       .then((data) => setWeather(data));
   }
+  console.log(weather);
 
   return (
     <div className='details-container'>
