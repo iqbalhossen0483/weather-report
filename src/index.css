@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  form {
+    @apply w-2/5;
+  }
+  form input {
+    @apply border border-r-0 rounded-l px-4 py-1 text-xl focus:outline-none;
+  }
+  button {
+    @apply border border-l-0 rounded px-4 py-1 text-xl uppercase font-medium hover:bg-violet-700 text-white;
+  }
+
+  /* home page */
+  .home-container {
+    @apply min-h-screen flex flex-col items-center py-7;
+  }
+
+  /* details page */
+  .details-container {
+    @apply mt-5 text-xl grid grid-cols-2;
+  }
+  .details-container h2 {
+    @apply text-2xl font-semibold col-span-2 text-center mb-5;
+  }
+  .details-container span {
+    @apply font-medium;
+  }
+
+  /* weather-report component */
+  .weather-report {
+    @apply mt-10 text-xl grid grid-cols-2 items-center;
+  }
+  .weather-report h2 {
+    @apply font-medium text-center col-span-2;
+  }
+}
