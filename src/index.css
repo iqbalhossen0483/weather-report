@@ -28,9 +28,9 @@
 
   /* weather-report component */
   .weather-report {
-    @apply mt-10 text-xl grid grid-cols-2 items-center;
+    @apply text-xl flex items-center col-span-2 justify-center;
   }
-  .weather-report h2 {
-    @apply font-medium text-center col-span-2;
+  .weather-report-header {
+    @apply font-medium text-center mt-10;
   }
 }
