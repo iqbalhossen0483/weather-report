@@ -46,6 +46,7 @@ function Home() {
     } finally {
       setLoading(false);
       if (countryName.current) countryName.current.value = "";
+      setDisable(true);
     }
   }
 
