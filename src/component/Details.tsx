@@ -57,7 +57,7 @@ const Details: FC<Props> = (props) => {
 
       {weather && <Weather weather={weather} />}
       {error && (
-        <div className='text-xl text-gray-400 font-medium mt-10'>
+        <div className='col-span-2 text-xl text-gray-400 font-medium mt-10'>
           <p>{error}</p>
         </div>
       )}
