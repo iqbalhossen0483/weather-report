@@ -4,13 +4,10 @@
 
 @layer components {
   form {
-    @apply w-2/5;
+    @apply w-2/5 flex items-center;
   }
   form input {
-    @apply border border-r-0 rounded-l px-4 py-1 text-xl focus:outline-none;
-  }
-  button {
-    @apply border border-l-0 rounded px-4 py-1 text-xl uppercase font-medium hover:bg-violet-700 text-white;
+    @apply border rounded-l px-4 py-1 text-xl focus:outline-none;
   }
 
   /* home page */

@@ -1,16 +1,37 @@
-import { FC, useState } from "react";
+import { Button } from "@mui/material";
+import { FC } from "react";
 import Weather from "./Weather";
 
-const Details: FC<{ country: Country }> = ({ country }) => {
-  const [weather, setWeather] = useState<Weather | null>(null);
+interface Props {
+  country: Country;
+  weather: Weather | null;
+  setWeather: (active: Weather | null) => void;
+  error: string | null;
+  setError: (active: string | null) => void;
+}
 
-  function getWeatherReport(country: string) {
+const Details: FC<Props> = (props) => {
+  const { country, weather, setWeather, error, setError } = props;
+
+  //get weather report;
+  async function getWeatherReport(country: string) {
     const url: string = `http://api.weatherstack.com/current?access_key=${process.env.REACT_APP_API}&query=${country}`;
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setWeather(data));
+
+    try {
+      const res = await fetch(url);
+      if (res.ok) {
+        const data = await res.json();
+        setWeather(data);
+      } else {
+        setWeather(null);
+        setError("There was an error occoured. see The console.");
+      }
+    } catch (err) {
+      setWeather(null);
+      setError("There was an error occoured. see The console.");
+      console.log(err);
+    }
   }
-  console.log(weather);
 
   return (
     <div className='details-container'>
@@ -25,16 +46,21 @@ const Details: FC<{ country: Country }> = ({ country }) => {
         <p>
           <span>Latlng: </span> {country.latlng.join(",")}
         </p>
-        <button
+        <Button
+          variant='outlined'
           onClick={() => getWeatherReport(country.capital[0])}
-          className='bg-violet-600'
         >
-          See Capital Weather
-        </button>
+          Capital Weather
+        </Button>
       </div>
       <img src={country.flags.png} alt='' />
 
-      {/* {weather && <Weather weather={weather} />} */}
+      {weather && <Weather weather={weather} />}
+      {error && (
+        <div className='text-xl text-gray-400 font-medium mt-10'>
+          <p>{error}</p>
+        </div>
+      )}
     </div>
   );
 };
