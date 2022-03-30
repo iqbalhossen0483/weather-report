@@ -31,16 +31,21 @@ function Home() {
     //fetch country data;
     const url: string = `https://restcountries.com/v3.1/name/${countryName.current?.value}`;
 
-    const res = await fetch(url);
-    if (res.status > 200) {
-      setUserMessage(true);
-      setCountry(null);
+    try {
+      const res = await fetch(url);
+      if (res.status > 200) {
+        setUserMessage(true);
+        setCountry(null);
+      } else {
+        setUserMessage(false);
+        const data = await res.json();
+        setCountry(data[0]);
+      }
+    } catch (err) {
+      console.log(err);
+    } finally {
       setLoading(false);
-    } else {
-      setUserMessage(false);
-      const data = await res.json();
-      setCountry(data[0]);
-      setLoading(false);
+      if (countryName.current) countryName.current.value = "";
     }
   }
 
