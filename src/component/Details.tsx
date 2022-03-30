@@ -34,7 +34,7 @@ const Details: FC<{ country: Country }> = ({ country }) => {
       </div>
       <img src={country.flags.png} alt='' />
 
-      {weather && <Weather weather={weather} />}
+      {/* {weather && <Weather weather={weather} />} */}
     </div>
   );
 };

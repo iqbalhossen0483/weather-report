@@ -1,6 +1,6 @@
 # Live site link
 
-https://weather-report-fb0b4.web.app/
+https://weather-report0483.netlify.app/
 
 # Getting Started with Create React App
 
