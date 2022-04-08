@@ -51,28 +51,28 @@ function Home() {
   }
 
   return (
-    <div className='home-container'>
+    <div className="home-container">
       <form onSubmit={(e) => handleSubmit(e)}>
         <input
           onChange={(e) => handleSubmitBtn(e.target.value)}
           ref={countryName}
-          type='text'
+          type="text"
           required
-          placeholder='Enter country'
+          placeholder="Enter country"
         />
         <LoadingButton
-          type='submit'
+          type="submit"
           disabled={disable}
           loading={loading}
-          loadingIndicator='Loading...'
-          variant='contained'
+          loadingIndicator="Loading..."
+          variant="contained"
         >
           Find Country
         </LoadingButton>
       </form>
 
       {userMessage && (
-        <div className='text-xl text-gray-400 font-medium mt-10'>
+        <div className="text-xl text-gray-400 font-medium mt-10">
           <p>No results matched</p>
         </div>
       )}
