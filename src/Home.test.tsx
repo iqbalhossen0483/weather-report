@@ -1,8 +1,8 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import Home from "./Home";
+import App from "./App";
 
 it("home page render and check has input and button", () => {
-  render(<Home />);
+  render(<App />);
   const inputElement = screen.getByPlaceholderText(/Enter country/i);
   const buttonElement = screen.getByRole("button", { name: /Find Country/i });
   expect(inputElement).toBeInTheDocument();
@@ -10,13 +10,13 @@ it("home page render and check has input and button", () => {
 });
 
 it("check button is disable when input feild is empty", () => {
-  render(<Home />);
+  render(<App />);
   const buttonElement = screen.getByRole("button", { name: /Find Country/i });
   expect(buttonElement).toBeDisabled();
 });
 
 it("check button is enable when input feild is not empty", () => {
-  render(<Home />);
+  render(<App />);
   const inputElement = screen.getByPlaceholderText(
     /Enter country/i
   ) as HTMLInputElement;
@@ -28,7 +28,7 @@ it("check button is enable when input feild is not empty", () => {
 });
 
 it("fetch api", async () => {
-  render(<Home />);
+  render(<App />);
   const inputElement = screen.getByPlaceholderText(/Enter country/i);
   const buttonElement = screen.getByRole("button", { name: /Find Country/i });
   fireEvent.change(inputElement, { target: { value: "bangladesh" } });
