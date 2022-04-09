@@ -20,7 +20,7 @@ function Home() {
   };
 
   return (
-    <div className="home-container">
+    <div data-testid="home-page" className="home-container">
       <form onSubmit={(e) => handleSubmit(e)}>
         <input
           onChange={(e) => handleInput(e.target.value)}

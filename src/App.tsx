@@ -8,7 +8,7 @@ import Home from "./pages/home/Home";
 const App = () => {
   const store = Store();
   return (
-    <div>
+    <div data-testid="app">
       <Provider store={store}>
         <Routes>
           <Route path="/" element={<Home />} />

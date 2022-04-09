@@ -25,14 +25,14 @@ const Country = () => {
 
   if (store?.loading) {
     return (
-      <div className="spinner">
+      <div data-testid="country-page" className="spinner">
         <p>Loading...</p>
       </div>
     );
   }
 
   return (
-    <>
+    <div data-testid="country-page">
       {store?.userMessage && (
         <div className="user-message">
           <p>No results matched</p>
@@ -75,7 +75,7 @@ const Country = () => {
           )}
         </div>
       )}
-    </>
+    </div>
   );
 };
 
