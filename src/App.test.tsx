@@ -5,7 +5,7 @@ import App from "./App";
 import userEvent from "@testing-library/user-event";
 
 describe("app component", () => {
-  it("home page render and check has input and button", () => {
+  it("app is rendering", () => {
     render(
       <BrowserRouter>
         <App />

@@ -33,6 +33,18 @@ const store: StoreSchema = {
 };
 
 describe("Home page", () => {
+  it("check home page has one input feild and one button", () => {
+    render(
+      <BrowserRouter>
+        <Home />
+      </BrowserRouter>
+    );
+    const inputElement = screen.getByPlaceholderText(/Enter country/i);
+    const buttonElement = screen.getByRole("button", { name: /Find Country/i });
+    expect(inputElement).toBeInTheDocument();
+    expect(buttonElement).toBeInTheDocument();
+  });
+
   it("check button is disable when input feild is empty", () => {
     render(
       <BrowserRouter>
