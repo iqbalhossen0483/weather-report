@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
 import Provider from "../../contexAPI/Provider";
 import { StoreSchema } from "../../contexAPI/Store";
 import Country from "./Country";
@@ -33,25 +34,35 @@ const fackStore: StoreSchema = {
 
 describe("country page", () => {
   it("county page is rendering", () => {
-    render(<Country />);
+    render(
+      <BrowserRouter>
+        <Country />
+      </BrowserRouter>
+    );
     expect(screen.getByTestId("country-page")).toBeInTheDocument();
   });
 
   it("check country info is rendering", () => {
     render(
-      <Provider store={fackStore}>
-        <Country />
-      </Provider>
+      <BrowserRouter>
+        <Provider store={fackStore}>
+          <Country />
+        </Provider>
+      </BrowserRouter>
     );
     expect(screen.getByText(/bangladesh/i)).toBeInTheDocument();
   });
 
   it("check weather info is rendering", () => {
     render(
-      <Provider store={fackStore}>
-        <Country />
-      </Provider>
+      <BrowserRouter>
+        <Provider store={fackStore}>
+          <Country />
+        </Provider>
+      </BrowserRouter>
     );
-    expect(screen.getByText(/weather report of dhaka/i)).toBeInTheDocument();
+    expect(
+      screen.getByText(/weather report of dhaka/i)
+    ).toBeInTheDocument();
   });
 });

@@ -26,7 +26,7 @@
     @apply font-medium;
   }
   .user-message {
-    @apply text-xl text-gray-400 font-medium h-[80vh] flex justify-center items-center;
+    @apply text-xl text-gray-400 font-medium h-[80vh] flex flex-col space-y-3 justify-center items-center;
   }
   .spinner {
     @apply h-[80vh] flex justify-center items-center text-xl;

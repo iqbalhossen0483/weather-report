@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Weather from "../../component/Weather";
 import useStore from "../../hooks/useStore";
 
@@ -8,6 +8,7 @@ const Country = () => {
   const store = useStore();
   const country = store?.country;
   const { name } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (name) {
@@ -25,24 +26,27 @@ const Country = () => {
 
   if (store?.loading) {
     return (
-      <div data-testid="country-page" className="spinner">
+      <div data-testid='country-page' className='spinner'>
         <p>Loading...</p>
       </div>
     );
   }
 
   return (
-    <div data-testid="country-page">
+    <div data-testid='country-page'>
       {store?.userMessage && (
-        <div className="user-message">
+        <div className='user-message'>
           <p>No results matched</p>
+          <Button variant='outlined' onClick={() => navigate("/")}>
+            Try again
+          </Button>
         </div>
       )}
 
       {country && (
-        <div className="country-container">
+        <div className='country-container'>
           <h2>{country?.name?.official}</h2>
-          <div className="space-y-3">
+          <div className='space-y-3'>
             <p>
               <span>Capital: </span> {country?.capital?.join(",")}
             </p>
@@ -58,18 +62,18 @@ const Country = () => {
               <sup>&deg;</sup>
             </p>
             <Button
-              variant="outlined"
+              variant='outlined'
               onClick={() => getWeatherReport(country?.capital[0])}
             >
               Capital Weather
             </Button>
           </div>
-          <img src={country?.flags?.png} alt="" />
+          <img src={country?.flags?.png} alt='' />
 
           {store?.weather && <Weather weather={store?.weather} />}
 
           {store?.error && (
-            <div className="col-span-2 text-xl text-gray-400 font-medium mt-10">
+            <div className='col-span-2 text-xl text-gray-400 font-medium mt-10'>
               <p>{store?.error}</p>
             </div>
           )}
